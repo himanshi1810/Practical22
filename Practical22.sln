@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeWebApi", "EmployeeW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApi.DAL", "EmployeeApi.DAL\EmployeeApi.DAL.csproj", "{2A090F96-C71A-4885-B6D2-64A5DC03E073}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApi.Core", "EmployeeApi.Core\EmployeeApi.Core.csproj", "{C3E2618D-8715-4216-A79C-BBCF9FDDF2B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2A090F96-C71A-4885-B6D2-64A5DC03E073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A090F96-C71A-4885-B6D2-64A5DC03E073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A090F96-C71A-4885-B6D2-64A5DC03E073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E2618D-8715-4216-A79C-BBCF9FDDF2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E2618D-8715-4216-A79C-BBCF9FDDF2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E2618D-8715-4216-A79C-BBCF9FDDF2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E2618D-8715-4216-A79C-BBCF9FDDF2B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

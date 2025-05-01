@@ -1,7 +1,7 @@
-using EmployeeWebApi.Models;
+using EmployeeApi.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeWebApi.Data
+namespace EmployeeApi.Core.Data
 {
     public class AppDbContext : DbContext
     {

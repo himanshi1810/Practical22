@@ -1,4 +1,4 @@
-namespace EmployeeWebApi.DTOs
+namespace EmployeeApi.Core.DTOs
 {
     public class EmployeeCreateDTO
     {

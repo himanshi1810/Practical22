@@ -1,4 +1,4 @@
-namespace EmployeeWebApi.Models
+namespace EmployeeApi.Core.Models
 {
     public class Employee
     {

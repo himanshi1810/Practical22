@@ -1,5 +1,5 @@
-using EmployeeWebApi.Models;
-using EmployeeWebApi.DTOs;
+using EmployeeApi.Core.Models;
+using EmployeeApi.Core.DTOs;
 
 namespace EmployeeApi.DAL
 {

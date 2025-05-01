@@ -1,6 +1,6 @@
-using EmployeeWebApi.Data;
-using EmployeeWebApi.DTOs;
-using EmployeeWebApi.Models;
+using EmployeeApi.Core.Models;
+using EmployeeApi.Core.DTOs;
+using EmployeeApi.Core.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeApi.DAL

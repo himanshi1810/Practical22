@@ -1,6 +1,6 @@
-using EmployeeWebApi.Data;
-using EmployeeWebApi.DTOs;
-using EmployeeWebApi.Models;
+using EmployeeApi.Core.Data;
+using EmployeeApi.Core.DTOs;
+using EmployeeApi.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeApi.DAL;
 

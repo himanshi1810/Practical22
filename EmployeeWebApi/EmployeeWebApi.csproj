@@ -16,4 +16,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeApi.Core\EmployeeApi.Core.csproj" />
+    <ProjectReference Include="..\EmployeeApi.DAL\EmployeeApi.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

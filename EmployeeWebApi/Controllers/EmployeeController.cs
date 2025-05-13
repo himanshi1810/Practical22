@@ -1,62 +1,61 @@
-using EmployeeApi.Core.Data;
-using EmployeeApi.Core.DTOs;
-using EmployeeApi.Core.Models;
+using Employee.DAL.Services;
+using Employee.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
-using EmployeeApi.DAL;
-
-namespace EmployeeWebApi.Controllers
+using Employee.DAL.Models.DTO;
+namespace EmployeeWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-
     public class EmployeeController : ControllerBase
     {
-        private readonly IEmployeeService _employeeService;
+        private readonly EmployeeRepository _repo;
+        private readonly ILoggerService _logger;
 
-        public EmployeeController(AppDbContext context)
+        // Inject both repository and logger via constructor
+        public EmployeeController(EmployeeRepository repo, ILoggerService logger)
         {
-            _employeeService = EmployeeService.GetInstance(context); // Singleton pattern
+            _repo = repo;
+            _logger = logger;
         }
 
-        [HttpPost("create")]
-        public async Task<IActionResult> Create(EmployeeCreateDTO dto)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
-            var emp = await _employeeService.CreateAsync(dto);
-            return Ok(emp);
+            var emp = _repo.GetById(id);
+            _logger.Log($"Fetched employee with ID {id}");
+            return emp == null ? NotFound() : Ok(emp);
         }
 
-        [HttpPut("update")]
-        public async Task<IActionResult> Update(EmployeeUpdateDTO dto)
+        [HttpGet]
+        public IActionResult GetAll()
         {
-            try
-            {
-                var emp = await _employeeService.UpdateAsync(dto);
-                return Ok(emp);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
-        }
-
-        [HttpPut("deactivate/{id}")]
-        public async Task<IActionResult> Deactivate(int id)
-        {
-            var result = await _employeeService.DeactivateAsync(id);
-            return result ? Ok("Employee deactivated") : NotFound("Employee not found");
-        }
-
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get(int? id)
-        {
-            if (id.HasValue)
-            {
-                var emp = await _employeeService.GetByIdAsync(id.Value);
-                return emp != null ? Ok(emp) : NotFound("Employee not found");
-            }
-
-            var employees = await _employeeService.GetAllAsync();
+            var employees = _repo.GetAll();
+            _logger.Log("Fetched all employees");
             return Ok(employees);
+        }
+
+        [HttpPost]
+        public IActionResult Create(AddEmployeeDTO emp)
+        {
+            _repo.Create(emp);
+            _logger.Log($"Created employee {emp.EmployeeName}");
+            return Ok("Employee added");
+        }
+
+        [HttpPut]
+        public IActionResult Update(EmployeeModel emp)
+        {
+            _repo.Update(emp);
+            _logger.Log($"Updated employee ID {emp.EmployeeId}");
+            return Ok("Employee updated");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _repo.SoftDelete(id);
+            _logger.Log($"Soft deleted employee ID {id}");
+            return Ok("Employee soft deleted");
         }
     }
 }

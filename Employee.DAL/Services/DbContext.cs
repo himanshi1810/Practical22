@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Employee.DAL.Services
 {
-    public sealed class DbService
+    public sealed class DbContext
     {
-        private static readonly Lazy<DbService> _instance = new Lazy<DbService>(() => new DbService());
+        private static readonly Lazy<DbContext> _instance = new Lazy<DbContext>(() => new DbContext());
         private readonly string _connectionString;
 
-        public DbService()
+        public DbContext()
         {
             _connectionString = "Server=SF-CPU-0226\\SQLEXPRESS;Database=Practical_22;Trusted_Connection=True;Encrypt=False;";
         }
 
-        public static DbService Instance => _instance.Value;
+        public static DbContext Instance => _instance.Value;
 
         public SqlConnection GetConnection()
         {

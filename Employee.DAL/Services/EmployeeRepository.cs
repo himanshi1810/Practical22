@@ -14,7 +14,7 @@ namespace Employee.DAL.Services
     {
         public void Create(AddEmployeeDTO emp)
         {
-            using (var conn = DbService.Instance.GetConnection())
+            using (var conn = DbContext.Instance.GetConnection())
             {
                 string query = @"INSERT INTO Employee 
                                 (EmployeeName, EmployeeSalary, DepartmentId, EmployeeEmail, EmployeeJoiningDate, EmployeeStatus)
@@ -33,7 +33,7 @@ namespace Employee.DAL.Services
 
         public void Update(EmployeeModel emp)
         {
-            using (var conn = DbService.Instance.GetConnection())
+            using (var conn = DbContext.Instance.GetConnection())
             {
                 string query = @"UPDATE Employee SET 
                                 EmployeeName = @Name,
@@ -56,7 +56,7 @@ namespace Employee.DAL.Services
 
         public void SoftDelete(int id)
         {
-            using (var conn = DbService.Instance.GetConnection())
+            using (var conn = DbContext.Instance.GetConnection())
             {
                 string query = "UPDATE Employee SET EmployeeStatus = 'Inactive' WHERE EmployeeId = @Id";
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -70,7 +70,7 @@ namespace Employee.DAL.Services
         public EmployeeModel GetById(int id)
         {
             EmployeeModel emp = null;
-            using (var conn = DbService.Instance.GetConnection())
+            using (var conn = DbContext.Instance.GetConnection())
             {
                 string query = "SELECT * FROM Employee WHERE EmployeeId = @Id";
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -98,7 +98,7 @@ namespace Employee.DAL.Services
         public List<EmployeeModel> GetAll()
         {
             List<EmployeeModel> list = new List<EmployeeModel>();
-            using (var conn = DbService.Instance.GetConnection())
+            using (var conn = DbContext.Instance.GetConnection())
             {
                 string query = "SELECT * FROM Employee";
                 SqlCommand cmd = new SqlCommand(query, conn);

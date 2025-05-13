@@ -39,7 +39,7 @@ namespace EmployeeWebAPI.Controllers
         {
             _repo.Create(emp);
             _logger.Log($"Created employee {emp.EmployeeName}");
-            return Ok("Employee added");
+            return Ok($"Employee {emp.EmployeeName} added");
         }
 
         [HttpPut]
@@ -47,7 +47,7 @@ namespace EmployeeWebAPI.Controllers
         {
             _repo.Update(emp);
             _logger.Log($"Updated employee ID {emp.EmployeeId}");
-            return Ok("Employee updated");
+            return Ok($"Employee with {emp.EmployeeId} updated");
         }
 
         [HttpDelete("{id}")]
@@ -55,7 +55,7 @@ namespace EmployeeWebAPI.Controllers
         {
             _repo.SoftDelete(id);
             _logger.Log($"Soft deleted employee ID {id}");
-            return Ok("Employee soft deleted");
+            return Ok($"Employee {id} soft deleted ");
         }
     }
 }
